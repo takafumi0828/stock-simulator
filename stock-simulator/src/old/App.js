@@ -316,20 +316,7 @@ series.setData(stockData.slice(0, dayIndex + 1));
     ? new Date(stockData[dayIndex].time * 1000).toISOString().slice(0, 10)
     : null;
 
-const latestYourProfit = yourPnlData.length > 0 
-  ? yourPnlData[Math.min(dayIndex, yourPnlData.length - 1)].profit || 0 
-  : 0;
-
-const latestNikkeiProfit = nikkeiPnL.length > 0 
-  ? nikkeiPnL[Math.min(dayIndex, nikkeiPnL.length - 1)].profit || 0 
-  : 0;
-
-const ranking = [
-  { name: "あなた", profit: latestYourProfit },
-  { name: "日経平均", profit: latestNikkeiProfit }
-].sort((a, b) => b.profit - a.profit);
-
-  return (
+return (
   <div className="p-4">
     {showHowToPlay && <HowToPlay onClose={() => setShowHowToPlay(false)} />}
 
@@ -352,7 +339,7 @@ const ranking = [
       {/* 上段：株価チャート + ニュース + コントロール */}
       <div className="flex max-w-6xl w-full space-x-4">
 
-        {/* 左：株価チャート + ランキング */}
+        {/* 左：株価チャート + あなたvs日経平均 */}
         <div className="flex flex-col flex-1 space-y-2">
           {/* 株価チャート */}
           <div
@@ -361,33 +348,19 @@ const ranking = [
             style={{ backgroundColor: "#001f3f", height: 300 }}
           />
 
-          {/* リアルタイムランキング */}
-          <div className="bg-gray-800 text-white rounded-lg p-4 w-full shadow-lg">
-            <h4 className="font-bold mb-3 text-center">リアルタイムランキング</h4>
-            <ul>
-              {[
-                { name: "あなた", profit: totalProfit + unrealizedPL },
-                { name: "日経平均", profit: latestNikkeiProfit }
-              ]
-              .sort((a, b) => b.profit - a.profit)
-              .map((item, index) => (
-                <li
-                  key={item.name}
-                  className="flex justify-between border-b border-gray-600 py-2 text-sm"
-                >
-                  <span>{index + 1}位: {item.name}</span>
-                  <span className={item.profit >= 0 ? "text-green-300" : "text-red-300"}>
-                    {item.profit.toLocaleString()}円
-                  </span>
-                </li>
-              ))}
-            </ul>
+          {/* あなた vs 日経平均 */}
+          <div className="bg-[#121212] rounded-lg shadow">
+            <BenchmarkChart 
+              yourPnlData={yourPnlData}
+              dayIndex={dayIndex}
+              nikkeiPnL={nikkeiPnL}
+            />
           </div>
         </div>
 
         {/* 右：ニュース + コントロール */}
         <div className="flex flex-col w-72 space-y-4">
-
+          
           {/* ニュース */}
           <div className="rounded-lg p-4 shadow-lg"
                style={{
@@ -396,25 +369,26 @@ const ranking = [
                }}>
             <h3 className="font-bold mb-2">今月のニュース</h3>
             <div className="mt-4">
-              <h4 className="font-semibold mb-2 text-lg border-t border-yellow-400 pt-2">
-                ゴールデンクロス&デッドクロス情報
-              </h4>
-              {latestCross ? (
-                <div className="text-white text-xl p-2 rounded shadow">
-                  {latestCross.message}
-                </div>
-              ) : (
-                <p className="text-xs text-gray-400">まだ発生していません。</p>
-              )}
-            </div>
+            <h4 className="font-semibold mb-2 text-lg border-t border-yellow-400 pt-2">
+              ゴールデンクロス&デッドクロス情報
+            </h4>
+            {latestCross ? (
+              <div className="text-white text-xl p-2 rounded shadow">
+                {latestCross.message}
+              </div>
+            ) : (
+              <p className="text-xs text-gray-400">まだ発生していません。</p>
+            )}
           </div>
-
+        </div>
+        
           {/* コントロールパネル */}
           <div className="rounded-lg p-4 shadow-lg flex flex-col justify-between"
                style={{
                  background: "linear-gradient(135deg, #1f2937 0%, #374151 100%)",
                  height: 300
                }}>
+            
             <div className="space-y-1 text-sm">
               株価: <span className="text-yellow-300">{currentPrice.toLocaleString()}円</span><br />
               損益: <span className="text-red-400">{(totalProfit + unrealizedPL).toLocaleString()}円</span><br />
@@ -443,5 +417,4 @@ const ranking = [
       </div>
     </div>
   </div>
-);
-}
+)};
