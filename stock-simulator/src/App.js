@@ -27,6 +27,7 @@ export default function App() {
   const [yourPnlData, setYourPnlData] = useState([]);
   const [nikkeiPnL, setNikkeiPnL] = useState([]);
   const [nikkeiRawData, setNikkeiRawData] = useState([]);
+  const basePath = process.env.PUBLIC_URL || "";
 
   const latestCross = useMemo(() => {
   if (!stockData[dayIndex] || CrossEvents.length === 0) return null;
@@ -37,7 +38,7 @@ export default function App() {
 
 useEffect(() => {
   const fetchNikkeiPnL = async () => {
-    const response = await fetch("/stock_2symbols_2y_ohlc.csv");
+    const response = await fetch("${basePath}/stock_2symbols_2y_ohlc.csv");
     const text = await response.text();
     
     // PapaParseでヘッダ付き読み込み
@@ -83,7 +84,7 @@ useEffect(() => {
 }, []);
 
   const fetchStockDataFromCSV = async (symbol = "トヨタ") => {
-    const response = await fetch("/stock_2symbols_2y_ohlc.csv");
+    const response = await fetch("${basePath}/stock_2symbols_2y_ohlc.csv");
     const text = await response.text();
     const parsed = Papa.parse(text, { header: true, dynamicTyping: true });
     const cleaned = parsed.data.filter(
@@ -366,8 +367,8 @@ const ranking = [
             <h4 className="font-bold mb-3 text-center">リアルタイムランキング</h4>
             <ul>
               {[
-                { name: "あなた", profit: totalProfit + unrealizedPL },
-                { name: "日経平均", profit: latestNikkeiProfit }
+                { name: "あなたの損益", profit: totalProfit + unrealizedPL },
+                { name: "日経平均を毎月積立した場合の損益", profit: latestNikkeiProfit }
               ]
               .sort((a, b) => b.profit - a.profit)
               .map((item, index) => (
