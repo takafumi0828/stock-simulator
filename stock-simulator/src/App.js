@@ -38,7 +38,7 @@ export default function App() {
 
 useEffect(() => {
   const fetchNikkeiPnL = async () => {
-    const response = await fetch("${basePath}/stock_2symbols_2y_ohlc.csv");
+    const response = await fetch(`${basePath}/stock_2symbols_2y_ohlc.csv`);
     const text = await response.text();
     
     // PapaParseでヘッダ付き読み込み
@@ -84,7 +84,7 @@ useEffect(() => {
 }, []);
 
   const fetchStockDataFromCSV = async (symbol = "トヨタ") => {
-    const response = await fetch("${basePath}/stock_2symbols_2y_ohlc.csv");
+    const response = await fetch(`${basePath}/stock_2symbols_2y_ohlc.csv`);
     const text = await response.text();
     const parsed = Papa.parse(text, { header: true, dynamicTyping: true });
     const cleaned = parsed.data.filter(
