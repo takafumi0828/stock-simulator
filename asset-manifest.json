@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/stock-simulator/static/css/main.a414ccdd.css",
-    "main.js": "/stock-simulator/static/js/main.91cc47fc.js",
+    "main.js": "/stock-simulator/static/js/main.1caa1808.js",
     "static/js/453.0c85d427.chunk.js": "/stock-simulator/static/js/453.0c85d427.chunk.js",
     "index.html": "/stock-simulator/index.html",
     "main.a414ccdd.css.map": "/stock-simulator/static/css/main.a414ccdd.css.map",
-    "main.91cc47fc.js.map": "/stock-simulator/static/js/main.91cc47fc.js.map",
+    "main.1caa1808.js.map": "/stock-simulator/static/js/main.1caa1808.js.map",
     "453.0c85d427.chunk.js.map": "/stock-simulator/static/js/453.0c85d427.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a414ccdd.css",
-    "static/js/main.91cc47fc.js"
+    "static/js/main.1caa1808.js"
   ]
 }
