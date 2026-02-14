@@ -1,3 +1,12 @@
+## 公開URL
+
+- https://takafumi0828.github.io/stock-simulator/
+
+## デプロイ
+
+- GitHub Actions (`.github/workflows/deploy.yml`) で GitHub Pages へ自動デプロイします。
+- ビルド成果物は `stock-simulator/dist` を使用します。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -21,7 +30,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `dist` folder via Vite.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
