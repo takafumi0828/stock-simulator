@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #10254f, #050b1f 70%);
+  color: #f8fafc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  padding: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.help {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.hud {
+  width: min(640px, 100%);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.game-field {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #60a5fa;
+  border-radius: 8px;
+  background: linear-gradient(#040a21, #06153f);
+  box-shadow: 0 0 22px rgba(96, 165, 250, 0.35);
+}
+
+.player,
+.invader,
+.bullet {
+  position: absolute;
+}
+
+.player {
+  border-radius: 8px 8px 3px 3px;
+  background: #22d3ee;
+}
+
+.invader {
+  border-radius: 6px;
+  background: #f43f5e;
+  box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bullet {
+  width: 4px;
+  height: 12px;
+  border-radius: 2px;
+  background: #f8fafc;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 6, 23, 0.75);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.reset-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 24px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: #0ea5e9;
 }
