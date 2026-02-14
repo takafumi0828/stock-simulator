@@ -5,7 +5,7 @@
 ## デプロイ
 
 - GitHub Actions (`.github/workflows/deploy.yml`) で GitHub Pages へ自動デプロイします。
-- ビルド成果物は `stock-simulator/dist` を使用します。
+- ビルド成果物は `stock-simulator/build` を使用します。
 
 # Getting Started with Create React App
 
