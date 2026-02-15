@@ -1,3 +1,13 @@
+## 公開URL
+
+- https://takafumi0828.github.io/stock-simulator/
+
+## デプロイ
+
+- GitHub Actions (`.github/workflows/deploy.yml`) で GitHub Pages へ自動デプロイします。
+- Create React App (`react-scripts`) の `build` を実行します。
+- ビルド成果物は `stock-simulator/build` を使用します。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
