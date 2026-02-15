@@ -5,7 +5,6 @@
 ## デプロイ
 
 - GitHub Actions (`.github/workflows/deploy.yml`) で GitHub Pages へ自動デプロイします。
-- Create React App (`react-scripts`) の `build` を実行します。
 - ビルド成果物は `stock-simulator/build` を使用します。
 
 # Getting Started with Create React App
@@ -31,7 +30,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `dist` folder via Vite.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
